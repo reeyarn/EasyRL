@@ -32,6 +32,38 @@ XBRL is powerful but **complex**:
 - Convert XBRL structures to **pandas DataFrames** or **nested dictionaries**
 - Support for both **company filings** and **raw US GAAP/SIFMA/IFRS taxonomies**
 
+## Install
+`uv pip install -e ".[dev]"`
+
+
+## Example
+```python
+from easyrl import parse_label_linkbase, Roles
+
+# Get documentation
+path = "/tmp/us-gaap-2020-01-31/elts/"
+#path = "EasyRL/tests/data/"
+
+filename = "us-gaap-doc-2020-01-31.xml"
+
+docs = parse_label_linkbase(path + filename)
+
+for i, (concept, doc) in enumerate(docs.items()):
+    print(f"{i}: {concept}: {doc}")
+    if i > 32:
+        break
+
+
+# Get display labels
+labels = parse_label_linkbase(path + 'us-gaap-lab-2020-01-31.xml', role=Roles.LABEL)
+
+
+for i, (concept, label) in enumerate(labels.items()):
+    print(f"{i}: {concept}: {label}")
+    if i > 32:
+        break
+```
+
 
 ## Project Structure
 ```
@@ -48,5 +80,48 @@ easyrl/
     └── sample_label.xml
 ```    
 
-## Install
-`uv pip install -e ".[dev]"`
+
+
+
+## Attribution & Legal Notices
+
+### ESEF Standard Acknowledgment
+This project supports the **European Single Electronic Format (ESEF)**, established by the **European Securities and Markets Authority (ESMA)** as the mandated digital reporting standard for annual financial reports of listed companies in the European Union. The ESEF specifications and guidelines are sourced from ESMA’s official publications and are adhered to in this implementation. For more information, visit [esma.europa.eu](https://www.esma.europa.eu).
+
+
+### IFRS Taxonomy & ESEF Standards
+This project supports the processing of filings based on the **International Financial Reporting Standards (IFRS)** and the **European Single Electronic Format (ESEF)**.
+
+**IFRS Taxonomy**
+The IFRS Taxonomy is developed and maintained by the **IFRS Foundation**. The taxonomy files included or referenced in this project are sourced from the IFRS Foundation’s official repository.
+* **Copyright:** The IFRS Taxonomy is **Copyright © IFRS Foundation**. All rights reserved.
+* **Disclaimer:** This project is an open-source tool and is not affiliated with, endorsed by, or commercially licensed by the IFRS Foundation. The files are used solely to facilitate the technical validation and creation of XBRL/iXBRL documents. For official standards, please visit [ifrs.org](https://www.ifrs.org).
+
+**ESEF Guidelines**
+The ESEF reporting standard is established by the **European Securities and Markets Authority (ESMA)** for listed companies in the European Union.
+* **Source:** ESEF specifications are sourced from ESMA’s official publications.
+* **Attribution:** Adherence to ESEF guidelines in this project is based on public technical standards available at [esma.europa.eu](https://www.esma.europa.eu).
+
+
+### US GAAP Taxonomy Acknowledgment & License
+
+This project includes copies of the US GAAP Financial Reporting Taxonomy (e.g., `us-gaap-YYYY-MM-DD.xsd`), sourced from official locations (e.g., [fasb.org](https://fasb.org) and [xbrl.us](https://xbrl.us)). These files are **Copyright © Financial Accounting Foundation (FAF)** and, for certain prior versions, **XBRL US, Inc.**
+
+The taxonomy files are redistributed within this project as a **"Permitted Work"** pursuant to the FAF's Copyright Notice and policies. They are provided for public use to assist in the implementation and processing of XBRL data.
+
+**Compliance Conditions:**
+1.  **Non-Modification:** All original copyright notices, XML comments, disclaimers, and license statements embedded in the taxonomy files have been preserved unchanged.
+2.  **No Ownership Claim:** This project does not claim ownership of the taxonomy; rights remain exclusively with the FAF and XBRL US.
+3.  **Authorized Use:** Use of these files is subject to the **Notice of Authorized Uses** maintained by the FAF.
+
+For full license terms, please see the [Official Terms and Conditions](https://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html).
+
+### General Disclaimer & Takedown Notice
+The use of the standards, taxonomies, and schemas listed above is intended to support educational and research purposes in alignment with the open-source goals of this project.
+
+**Rights Infringement Contact:**
+If any use herein is found to infringe upon the rights of the FASB, XBRL US, ESMA, or the IFRS Foundation, please contact the author immediately:
+
+> **Contact:** [reeyarn+github.openesef@gmail.com](mailto:reeyarn+github.openesef@gmail.com)
+
+Upon receipt of a valid notice, the author will promptly remove or adjust the offending content to address any concerns.
