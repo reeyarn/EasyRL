@@ -1,8 +1,11 @@
 from easyrl import parse_label_linkbase, Roles
 
 # Get documentation
-filename = "us-gaap-doc-2020-01-31.xml"
 path = "/tmp/us-gaap-2020-01-31/elts/"
+#path = "EasyRL/tests/data/"
+
+filename = "us-gaap-doc-2020-01-31.xml"
+
 docs = parse_label_linkbase(path + filename)
 
 for i, (concept, doc) in enumerate(docs.items()):
