@@ -7,6 +7,9 @@
 
 A lightweight, memory-efficient, and fast Python library for extracting specific information from XBRL filings and taxonomies — **without loading the entire DTS (Discovery Tree)**.
 
+**Funding Acknowledgment (DFG):** Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – Collaborative Research Center (SFB/TRR) Project-ID 403041268 – _TRR 266 Accounting for Transparency_.
+
+
 ## Motivation
 
 XBRL is powerful but **complex**:
@@ -33,7 +36,14 @@ XBRL is powerful but **complex**:
 - Support for both **company filings** and **raw US GAAP/SIFMA/IFRS taxonomies**
 
 ## Install
-`uv pip install -e ".[dev]"`
+```shell
+
+git clone https://github.com/reeyarn/EasyRL/
+cd EasyRL
+pip install -e .
+```
+
+or  `uv pip install -e ".[dev]"`
 
 
 ## Example
