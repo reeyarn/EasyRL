@@ -8,6 +8,8 @@ from .namespaces import (
     # Namespace class and collection
     Namespace,
     Namespaces,
+    # qname helper
+    qname,
     # Convenience constants
     NS_LINK,
     NS_XLINK,
@@ -28,9 +30,16 @@ from .namespaces import (
     ArcRoles,
 )
 
+from .streaming import (
+    stream_xml,
+    stream_xml_with_ancestors,
+)
+
 __all__ = [
+    # Namespaces
     'Namespace',
     'Namespaces',
+    'qname',
     'NS_LINK',
     'NS_XLINK',
     'NS_XBRLI',
@@ -47,4 +56,7 @@ __all__ = [
     'NS_XML',
     'Roles',
     'ArcRoles',
+    # Streaming
+    'stream_xml',
+    'stream_xml_with_ancestors',
 ]

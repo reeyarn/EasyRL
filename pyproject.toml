@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "easyrl"
-version = "0.1.0"
+version = "0.1.1"
 description = "Easy (non-XML) approach to process XBRL"
 readme = "README.md"
 requires-python = ">=3.9"

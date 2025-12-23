@@ -31,3 +31,22 @@ XBRL is powerful but **complex**:
 - Parse **taxonomy schema files** (elements, types, from `elts/`, `dis/`, `stm/`)
 - Convert XBRL structures to **pandas DataFrames** or **nested dictionaries**
 - Support for both **company filings** and **raw US GAAP/SIFMA/IFRS taxonomies**
+
+
+## Project Structure
+```
+easyrl/
+├── src/easyrl/
+│   ├── core/
+│   │   ├── namespaces.py   # qname(), Roles, NS_LINK, etc.
+│   │   └── streaming.py    # stream_xml()
+│   ├── utils/
+│   │   └── href.py         # extract_concept_from_href()
+│   └── linkbases/
+│       └── label.py        # parse_label_linkbase()
+└── tests/fixtures/
+    └── sample_label.xml
+```    
+
+## Install
+`uv pip install -e ".[dev]"`

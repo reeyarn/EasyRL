@@ -5,10 +5,13 @@ This module centralizes all XML namespace URIs and their ElementTree-formatted
 versions (with curly braces) used throughout XBRL processing.
 
 Usage:
-    from easyrl.core.namespaces import NS_LINK, NS_XLINK, Namespaces
+    from easyrl.core.namespaces import NS_LINK, NS_XLINK, Namespaces, qname
 
     # Direct usage for ElementTree tag matching
     tag == f'{NS_LINK}loc'
+
+    # Or use qname() for cleaner code
+    tag == qname('link', 'loc')
 
     # Or use the Namespaces class for more context
     Namespaces.LINK.uri  # Raw URI
@@ -17,6 +20,7 @@ Usage:
 
 from dataclasses import dataclass
 from typing import ClassVar
+from functools import lru_cache
 
 
 @dataclass(frozen=True)
@@ -146,17 +150,15 @@ class Namespaces:
 # =============================================================================
 # Convenience Constants (for direct import)
 # =============================================================================
-# These provide the ElementTree-formatted namespace strings for common use cases.
-# Import as: from easyrl.core.namespaces import NS_LINK, NS_XLINK
 
-NS_LINK = Namespaces.LINK.tag      # '{http://www.xbrl.org/2003/linkbase}'
-NS_XLINK = Namespaces.XLINK.tag    # '{http://www.w3.org/1999/xlink}'
-NS_XBRLI = Namespaces.XBRLI.tag    # '{http://www.xbrl.org/2003/instance}'
-NS_XBRLDI = Namespaces.XBRLDI.tag  # '{http://xbrl.org/2006/xbrldi}'
-NS_XBRLDT = Namespaces.XBRLDT.tag  # '{http://xbrl.org/2005/xbrldt}'
-NS_XS = Namespaces.XS.tag          # '{http://www.w3.org/2001/XMLSchema}'
-NS_XSD = Namespaces.XSD.tag        # '{http://www.w3.org/2001/XMLSchema}'
-NS_XSI = Namespaces.XSI.tag        # '{http://www.w3.org/2001/XMLSchema-instance}'
+NS_LINK = Namespaces.LINK.tag
+NS_XLINK = Namespaces.XLINK.tag
+NS_XBRLI = Namespaces.XBRLI.tag
+NS_XBRLDI = Namespaces.XBRLDI.tag
+NS_XBRLDT = Namespaces.XBRLDT.tag
+NS_XS = Namespaces.XS.tag
+NS_XSD = Namespaces.XSD.tag
+NS_XSI = Namespaces.XSI.tag
 NS_US_GAAP = Namespaces.US_GAAP.tag
 NS_DEI = Namespaces.DEI.tag
 NS_SRT = Namespaces.SRT.tag
@@ -166,7 +168,59 @@ NS_XML = Namespaces.XML.tag
 
 
 # =============================================================================
-# XBRL Role URIs (commonly used in linkbases)
+# qname() Helper Function
+# =============================================================================
+
+# Build prefix -> URI lookup once at module load
+_PREFIX_TO_URI: dict[str, str] = {
+    ns.prefix: ns.uri
+    for name, ns in vars(Namespaces).items()
+    if isinstance(ns, Namespace)
+}
+
+
+@lru_cache(maxsize=128)
+def qname(prefix: str, local_name: str) -> str:
+    """
+    Build a qualified name (QName) for ElementTree tag/attribute matching.
+    
+    This is the preferred way to construct namespace-qualified names
+    for use with ElementTree's iterparse.
+    
+    Args:
+        prefix: Namespace prefix (e.g., 'link', 'xlink', 'xbrli')
+        local_name: Local element/attribute name (e.g., 'loc', 'label', 'href')
+    
+    Returns:
+        ElementTree-formatted QName: '{namespace_uri}local_name'
+    
+    Raises:
+        KeyError: If prefix is not registered in Namespaces
+    
+    Examples:
+        >>> qname('link', 'loc')
+        '{http://www.xbrl.org/2003/linkbase}loc'
+        
+        >>> qname('xlink', 'href')
+        '{http://www.w3.org/1999/xlink}href'
+        
+        >>> # Use in parsing
+        >>> TAG_LOC = qname('link', 'loc')
+        >>> ATTR_HREF = qname('xlink', 'href')
+        >>> if elem.tag == TAG_LOC:
+        ...     href = elem.get(ATTR_HREF)
+    """
+    if prefix not in _PREFIX_TO_URI:
+        available = ', '.join(sorted(_PREFIX_TO_URI.keys()))
+        raise KeyError(
+            f"Unknown namespace prefix: {prefix!r}. "
+            f"Available prefixes: {available}"
+        )
+    return f'{{{_PREFIX_TO_URI[prefix]}}}{local_name}'
+
+
+# =============================================================================
+# XBRL Role URIs
 # =============================================================================
 
 class Roles:
@@ -196,27 +250,16 @@ class Roles:
     REFERENCE_LINK = 'http://www.xbrl.org/2003/role/referenceLinkbaseRef'
 
 
-# =============================================================================
-# Arc Roles (for relationship types in linkbases)
-# =============================================================================
-
 class ArcRoles:
     """Standard XBRL arc role URIs."""
     
-    # Presentation
     PARENT_CHILD = 'http://www.xbrl.org/2003/arcrole/parent-child'
-    
-    # Calculation
     SUMMATION_ITEM = 'http://www.xbrl.org/2003/arcrole/summation-item'
-    
-    # Definition / Dimensional
     HYPERCUBE_DIMENSION = 'http://xbrl.org/int/dim/arcrole/hypercube-dimension'
     DIMENSION_DOMAIN = 'http://xbrl.org/int/dim/arcrole/dimension-domain'
     DOMAIN_MEMBER = 'http://xbrl.org/int/dim/arcrole/domain-member'
     ALL = 'http://xbrl.org/int/dim/arcrole/all'
     NOT_ALL = 'http://xbrl.org/int/dim/arcrole/notAll'
-    
-    # General
     CONCEPT_LABEL = 'http://www.xbrl.org/2003/arcrole/concept-label'
     CONCEPT_REFERENCE = 'http://www.xbrl.org/2003/arcrole/concept-reference'
     FACT_FOOTNOTE = 'http://www.xbrl.org/2003/arcrole/fact-footnote'
