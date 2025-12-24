@@ -3,7 +3,7 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-<!--[![PyPI version](https://badge.fury.io/py/easyrl.svg)](https://badge.fury.io/py/easyrl)  optional once published -->
+<!--[![PyPI version](https://badge.fury.io/py/leanrl.svg)](https://badge.fury.io/py/leanrl)  optional once published -->
 
 A lightweight, memory-efficient, and fast Python library for extracting specific information from XBRL filings and taxonomies — **without loading the entire DTS (Discovery Tree)**.
 
@@ -18,7 +18,7 @@ XBRL is powerful but **complex**:
 - In many real-world scenarios (data extraction, analysis, reporting), you only need a small subset of the data
 
 
-**EasyRL** takes a **pragmatic, non-strict** approach:
+**LeanRL** takes a **pragmatic, non-strict** approach:
 - Process **one file at a time** (no full DTS loading)
 - Extract only what you need into simple Python structures (`dict`, `list`, `pandas.DataFrame`)
 - Forget strict XBRL validation and complex object models — focus on **speed and simplicity**
@@ -44,8 +44,8 @@ To install released version, run:
 To install the latest development version from this github repo, run:
 ```shell
 
-git clone https://github.com/reeyarn/EasyRL/
-cd EasyRL
+git clone https://github.com/reeyarn/LeanRL/
+cd LeanRL
 pip install -e .
 ```
 
@@ -54,11 +54,11 @@ or  `uv pip install -e ".[dev]"`
 
 ## Example
 ```python
-from easyrl import parse_label_linkbase, Roles
+from leanrl import parse_label_linkbase, Roles
 
 # Get documentation
 path = "/tmp/us-gaap-2020-01-31/elts/"
-#path = "EasyRL/tests/data/"
+#path = "LeanRL/tests/data/"
 
 filename = "us-gaap-doc-2020-01-31.xml"
 
@@ -83,8 +83,8 @@ for i, (concept, label) in enumerate(labels.items()):
 
 ## Project Structure
 ```
-easyrl/
-├── src/easyrl/
+leanrl/
+├── src/leanrl/
 │   ├── core/
 │   │   ├── namespaces.py   # qname(), Roles, NS_LINK, etc.
 │   │   └── streaming.py    # stream_xml()
