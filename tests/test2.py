@@ -411,6 +411,7 @@ if __name__ == '__main__':
         #exit(1)
 
     df = build_taxonomy_dataframe(base_path, output_path)
+    #df.loc[df.all_statements.str.contains("soi")].head(10).to_markdown()
     
     # Show some examples
     print("\n" + "=" * 60)
