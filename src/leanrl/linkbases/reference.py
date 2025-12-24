@@ -89,7 +89,7 @@ class Reference:
 def parse_reference_linkbase(
     xml_file: str,
     role: str | None = None,
-) -> Dict[str, List[Reference]]:
+    ) -> Dict[str, List[Reference]]:
     """
     Extract references from a reference linkbase file.
     
@@ -220,7 +220,7 @@ def parse_reference_linkbase(
 def parse_reference_linkbase_flat(
     xml_file: str,
     role: str | None = None,
-) -> Dict[str, List[Dict[str, str]]]:
+    ) -> Dict[str, List[Dict[str, str]]]:
     """
     Extract references as flat dictionaries (for pandas/JSON).
     

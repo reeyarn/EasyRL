@@ -91,11 +91,15 @@ leanrl/
 │   │   └── streaming.py    # stream_xml()
 │   ├── utils/
 │   │   └── href.py         # extract_concept_from_href()
-│   └── linkbases/
-│       ├── definition.py        
-│       ├── label.py             # parse_label_linkbase()
-│       └── reference.py         
-└── tests/
+|   linkbases/
+│   │   ├── __init__.py
+│   │   ├── label.py              # Label linkbase only
+│   │   ├── reference.py          # Reference linkbase only
+│   │   ├── calculation.py        # Calculation linkbase only
+│   │   ├── hierarchy.py          # Shared ConceptNode, ConceptTree (used by def & pre)
+│   │   ├── definition.py         # Definition linkbase only (imports from hierarchy)
+│   │   └── presentation.py       # Presentation linkbase only (imports from hierarchy)└── tests/
+├── tests/
     └── test1.py
 ```    
 

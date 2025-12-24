@@ -60,5 +60,14 @@ for i, (concept, reference) in enumerate(references.items()):
         break
     
 
-tree = parse_definition_linkbase(path + 'stm/us-gaap-stm-soi-def-2020-01-31.xml')
-    
+soi_def_tree = parse_definition_linkbase(path + 'stm/us-gaap-stm-soi-def-2020-01-31.xml')
+soi_def_tree.get_ancestor_path('us-gaap_ResearchAndDevelopmentExpense')    
+
+#soi_cal_tree = parse_calculation_linkbase(path + 'stm/us-gaap-stm-soi-cal-2020-01-31.xml')
+
+sfp_def_tree = parse_definition_linkbase(path + 'stm/us-gaap-stm-sfp-cls-def-2020-01-31.xml')
+sfp_def_tree.get_ancestor_path('us-gaap_ResearchAndDevelopmentExpense')    
+
+#DecreaseInUnrecognizedTaxBenefitsIsReasonablyPossible
+
+sfp_def_tree.get_ancestor_path('us-gaap_DecreaseInUnrecognizedTaxBenefitsIsReasonablyPossible')    

@@ -1,7 +1,7 @@
 """
-Definition Linkbase Parser
+Presentation Linkbase Parser
 
-Extract hierarchical relationships from XBRL definition linkbases.
+Extract hierarchical display relationships from XBRL presentation linkbases.
 """
 
 from typing import Dict, List, Set
@@ -12,50 +12,31 @@ from ..utils import extract_concept_from_href
 from .hierarchy import ConceptNode, ConceptTree
 
 
-def parse_definition_linkbase(
-    xml_file: str,
-    arcrole: str | None = None,
-) -> ConceptTree:
+def parse_presentation_linkbase(xml_file: str) -> ConceptTree:
     """
-    Parse a definition linkbase and build a concept hierarchy tree.
+    Parse a presentation linkbase and build a concept hierarchy tree.
     
-    Definition linkbases use arcs like:
-    - domain-member: Hierarchical relationships
-    - dimension-domain: Dimension to domain
-    - hypercube-dimension: Table to dimension
+    Presentation linkbases use parent-child arcs to define how
+    concepts should be displayed hierarchically in reports.
     
     Args:
-        xml_file: Path to the definition linkbase XML file
-        arcrole: Optional arc role to filter by. If None, uses domain-member.
-                Common values:
-                - ArcRoles.DOMAIN_MEMBER (default)
-                - ArcRoles.DIMENSION_DOMAIN
-                - ArcRoles.HYPERCUBE_DIMENSION
+        xml_file: Path to the presentation linkbase XML file
     
     Returns:
         ConceptTree with the parsed hierarchy
     
     Examples:
-        >>> tree = parse_definition_linkbase('us-gaap-stm-soi-def-2020.xml')
+        >>> tree = parse_presentation_linkbase('us-gaap-stm-soi-pre-2020.xml')
         >>> 
-        >>> # Get parent
-        >>> tree.get_parent('us-gaap_ResearchAndDevelopmentExpense')
-        'us-gaap_ResearchAndDevelopmentExpenseAbstract'
-        >>> 
-        >>> # Get full ancestor path
-        >>> tree.get_ancestors('us-gaap_ResearchAndDevelopmentExpense')
-        ['us-gaap_ResearchAndDevelopmentExpenseAbstract', 
-         'us-gaap_OperatingCostsAndExpensesAbstract', ...]
+        >>> # Get display hierarchy
+        >>> tree.get_children('us-gaap_IncomeStatementAbstract')
         >>> 
         >>> # Print tree
         >>> print(tree.print_tree())
     """
-    if arcrole is None:
-        arcrole = ArcRoles.DOMAIN_MEMBER
-    
     # Pre-compute qualified names
     TAG_LOC = qname('link', 'loc')
-    TAG_ARC = qname('link', 'definitionArc')
+    TAG_ARC = qname('link', 'presentationArc')
     
     ATTR_LABEL = qname('xlink', 'label')
     ATTR_HREF = qname('xlink', 'href')
@@ -64,8 +45,8 @@ def parse_definition_linkbase(
     ATTR_TO = qname('xlink', 'to')
     
     # Storage
-    loc_map: Dict[str, str] = {}  # label_id -> concept_name
-    arcs: List[tuple[str, str, float]] = []  # (parent_label, child_label, order)
+    loc_map: Dict[str, str] = {}
+    arcs: List[tuple[str, str, float]] = []
     
     context = ET.iterparse(xml_file, events=('end',))
     
@@ -79,8 +60,9 @@ def parse_definition_linkbase(
                 loc_map[label_id] = extract_concept_from_href(href)
         
         elif tag == TAG_ARC:
+            # Presentation linkbases use parent-child arcrole
             arc_role = elem.get(ATTR_ARCROLE)
-            if arc_role == arcrole:
+            if arc_role == ArcRoles.PARENT_CHILD:
                 from_id = elem.get(ATTR_FROM)
                 to_id = elem.get(ATTR_TO)
                 order_str = elem.get('order', '0')
@@ -113,15 +95,12 @@ def _build_tree(
         parent_concept = loc_map[from_label]
         child_concept = loc_map[to_label]
         
-        # Ensure parent node exists
         if parent_concept not in tree.nodes:
             tree.nodes[parent_concept] = ConceptNode(concept=parent_concept)
         
-        # Ensure child node exists
         if child_concept not in tree.nodes:
             tree.nodes[child_concept] = ConceptNode(concept=child_concept)
         
-        # Set relationship
         tree.nodes[child_concept].parent = parent_concept
         tree.nodes[child_concept].order = order
         
@@ -130,15 +109,12 @@ def _build_tree(
         
         has_parent.add(child_concept)
     
-    # Find roots (nodes without parents)
     for concept in tree.nodes:
         if concept not in has_parent:
             tree.roots.append(concept)
     
-    # Sort roots by order if available
     tree.roots.sort(key=lambda c: tree.nodes[c].order if c in tree.nodes else 0)
     
-    # Calculate depths
     def _set_depth(concept: str, depth: int):
         if concept in tree.nodes:
             tree.nodes[concept].depth = depth
