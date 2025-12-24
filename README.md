@@ -30,7 +30,7 @@ XBRL is powerful but **complex**:
 <!--- Extract facts from instance documents (simple alternative to `brel`, `python-xbrl`, etc.)-->
 - Parse **presentation linkbases** (build hierarchical trees, tables, roll-forwards)
 - Parse **calculation linkbases** (extract summation rules)
-- Parse **definition linkbases** (dimensions, tables, axes)
+- Parse **definition linkbases** (dimensions, tables, axes); [See: Documentation](https://github.com/reeyarn/LeanRL/tree/main/src/leanrl/linkbases/README.md)
 - Parse **label linkbases** (English/translated labels)
 - Parse **taxonomy schema files** (elements, types, from `elts/`, `dis/`, `stm/`)
 - Convert XBRL structures to **pandas DataFrames** or **nested dictionaries**
@@ -87,13 +87,16 @@ leanrl/
 ├── src/leanrl/
 │   ├── core/
 │   │   ├── namespaces.py   # qname(), Roles, NS_LINK, etc.
+│   │   ├── parser.py   
 │   │   └── streaming.py    # stream_xml()
 │   ├── utils/
 │   │   └── href.py         # extract_concept_from_href()
 │   └── linkbases/
-│       └── label.py        # parse_label_linkbase()
-└── tests/fixtures/
-    └── sample_label.xml
+│       ├── definition.py        
+│       ├── label.py             # parse_label_linkbase()
+│       └── reference.py         
+└── tests/
+    └── test1.py
 ```    
 
 
