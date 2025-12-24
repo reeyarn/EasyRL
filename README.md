@@ -1,5 +1,5 @@
-# EasyRL
- Easy (non-XML) approach to process XBRL
+# LeanRL
+ Lean (non-XML) approach to process XBRL
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -37,6 +37,11 @@ XBRL is powerful but **complex**:
 - Support for both **company filings** and **raw US GAAP/IFRS taxonomies**
 
 ## Install
+To install released version, run:
+`pip install leanrl`
+
+
+To install the latest development version from this github repo, run:
 ```shell
 
 git clone https://github.com/reeyarn/EasyRL/

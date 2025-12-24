@@ -1,13 +1,13 @@
 # source ~/Dropbox/Codes/MDIS/code/.venv/bin/activate
 
-from easyrl import parse_label_linkbase, Roles
-from easyrl import parse_reference_linkbase, parse_reference_linkbase_flat
+from leanrl import parse_label_linkbase, Roles
+from leanrl import parse_reference_linkbase, parse_reference_linkbase_flat
 
-from easyrl import parse_definition_linkbase
+from leanrl import parse_definition_linkbase
 
 # Get documentation
 path = "/tmp/us-gaap-2020-01-31/"
-#path = "EasyRL/tests/data/"
+#path = "leanrl/tests/data/"
 
 filename = "elts/us-gaap-doc-2020-01-31.xml"
 
