@@ -54,10 +54,11 @@ def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTre
     trees = {}
     stm_path = Path(base_path) / 'stm'
     dis_path = Path(base_path) / 'dis'
+    elts_path = Path(base_path) / 'elts'
     if not stm_path.exists():
         print(f"Warning: Statement path does not exist: {stm_path}")
         return trees
-
+    
     if not dis_path.exists():
         print(f"Warning: Disclosure path does not exist: {dis_path}")
         #return trees
@@ -67,6 +68,7 @@ def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTre
     # Use glob patterns (not regex) to find files, then filter with regex
     pattern_stm = re.compile(r'us-gaap-stm-(.+)-'+tree_type+r'-\d{4}(?:-\d{2}-\d{2})?\.xml')
     pattern_dis = re.compile(r'us-gaap-dis-(.+)-'+tree_type+r'-\d{4}(?:-\d{2}-\d{2})?\.xml')
+    pattern_elts = re.compile(r'us-gaap-'+tree_type+r'-\d{4}(?:-\d{2}-\d{2})?\.xml')
     
     # Use simple glob patterns and filter with regex
     for file_path in dis_path.glob('us-gaap-dis-*-'+tree_type+'-*.xml'):
@@ -76,8 +78,12 @@ def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTre
     for file_path in stm_path.glob('us-gaap-stm-*-'+tree_type+'-*.xml'):
         if pattern_stm.match(file_path.name):
             all_files.append(file_path)
-
+    
+    for file_path in elts_path.glob('us-gaap-'+tree_type+'-*.xml'):
+        if pattern_elts.match(file_path.name):
+            all_files.append(file_path)
     for file_path in all_files:
+        #file_path = Path(base_path) / "stm" / "us-gaap-stm-soi-def-2020-01-31.xml"
         match_stm = pattern_stm.match(file_path.name)
         match_dis = pattern_dis.match(file_path.name)
         if not match_stm and not match_dis:
@@ -89,12 +95,12 @@ def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTre
         # e.g., 'sfp-cls' -> 'sfp', 'scf-indir' -> 'scf-indir', 'soi' -> 'soi'
         if stmt_identifier:
             if stmt_identifier.startswith('sfp'):
-                statement_type = 'sfp'
+                statement_type = stmt_identifier #'sfp'
             elif stmt_identifier.startswith('soi'):
-                statement_type = 'soi'
+                statement_type = stmt_identifier #'soi'
             elif stmt_identifier.startswith('scf'):
                 # Keep the full identifier for SCF (e.g., 'scf-indir', 'scf-dir', 'scf-inv')
-                statement_type = "scf"
+                statement_type = stmt_identifier #"scf"
             else :
                 statement_type = stmt_identifier
         elif dis_identifier:
@@ -104,9 +110,13 @@ def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTre
         
         # Load the definition linkbase
         if tree_type == 'def':
+            #file_path = Path(base_path) / "stm" / "us-gaap-stm-soi-def-2020-01-31.xml"
             tree = parse_definition_linkbase(str(file_path))
+            #tree.nodes['us-gaap_ResearchAndDevelopmentExpense']
         elif tree_type == 'pre':
+            #file_path = Path(base_path) / "stm" / "us-gaap-stm-soi-pre-2020-01-31.xml"
             tree = parse_presentation_linkbase(str(file_path))
+            #tree.nodes['us-gaap_ResearchAndDevelopmentExpense']
         # elif tree_type == 'ref':
         #     tree = parse_reference_linkbase(str(file_path))
         else:
@@ -129,8 +139,17 @@ def find_concept_stm_dis(
     Returns StatementInfo for the first statement found, or None.
     Priority: sfp > soi > scf-indir > scf-dir
     """
-    priority = ['sfp', 'soi', 'scf-indir', 'scf-dir']
-    
+    priority0 = ['sfp', 'soi', 'scf']
+    stmt_fullname = {"sfp": "Statement of Financial Position", "soi": "Statement of Income", "scf": "Statement of Cash Flows"}
+    stm_types = trees.keys()
+    priority = priority0
+    for st in stm_types:
+        if re.search( '^(' + '|'.join(priority0) + ')', st):
+            st0 = st.split('-')[0]
+            priority.append(st)
+            stmt_fullname[st] = stmt_fullname[st0]
+    #return priority
+    #priority = [st for st in stm_types if re.search( '^(' + '|'.join(priority0) + ')', st)]
     for stmt_type in priority:
         if stmt_type not in trees:
             continue
@@ -141,13 +160,35 @@ def find_concept_stm_dis(
             path = tree.get_ancestor_path(concept)
             if path:
                 # Add statement type as conceptual root
-                full_path = [f'[{stmt_type.upper()}]'] + path
+                fullname = stmt_fullname.get(stmt_type, "unknown")
+                full_path = [f'[{fullname}]'] + path
+                print(f"Found {concept} in {fullname} with path: {full_path}")
                 return StatementInfo(
                     statement_type=stmt_type,
                     path=full_path,
                     depth=len(path)
                 )
+    return None
+
+
+def find_file_by_pattern(directory: Path, pattern: str) -> Optional[Path]:
+    """
+    Find a file in the given directory matching the regex pattern.
     
+    Args:
+        directory: Directory to search in
+        pattern: Regex pattern to match (e.g., r'us-gaap-\d{4}(?:-\d{2}-\d{2})?\.xsd')
+    
+    Returns:
+        Path to the first matching file, or None if not found
+    """
+    if not directory.exists():
+        return None
+    
+    regex = re.compile(pattern)
+    for file_path in directory.iterdir():
+        if file_path.is_file() and regex.match(file_path.name):
+            return file_path
     return None
 
 
@@ -170,15 +211,11 @@ def build_taxonomy_dataframe(
     base = Path(base_path)
     elts_path = base / 'elts'
     
-    print("=" * 60)
-    print("US-GAAP Taxonomy Analysis")
-    print("=" * 60)
-    print()
     
     # 1. Extract all concepts from schema
-    schema_file = elts_path / 'us-gaap-2020-01-31.xsd'
-    if not schema_file.exists():
-        raise FileNotFoundError(f"Schema file not found: {schema_file}")
+    schema_file = find_file_by_pattern(elts_path, r'us-gaap-\d{4}(?:-\d{2}-\d{2})?\.xsd')
+    if not schema_file:
+        raise FileNotFoundError(f"Schema file not found matching pattern us-gaap-\\d{{4}}(-\\d{{2}}-\\d{{2}})?\\.xsd in {elts_path}")
     
     print(f"Extracting concepts from: {schema_file}")
     all_concepts = extract_concepts_from_schema(str(schema_file), include_abstract=True)
@@ -191,36 +228,40 @@ def build_taxonomy_dataframe(
     
     # 2. Load labels
     print("Loading labels...")
-    label_file = elts_path / 'us-gaap-lab-2020-01-31.xml'
-    doc_file = elts_path / 'us-gaap-doc-2020-01-31.xml'
+    label_file = find_file_by_pattern(elts_path, r'us-gaap-lab-\d{4}(?:-\d{2}-\d{2})?\.xml')
+    doc_file = find_file_by_pattern(elts_path, r'us-gaap-doc-\d{4}(?:-\d{2}-\d{2})?\.xml')
     
     labels = {}
     docs = {}
     
-    if label_file.exists():
+    if label_file:
         labels = parse_label_linkbase(str(label_file), role=Roles.LABEL)
         print(f"  Labels: {len(labels)}")
     
-    if doc_file.exists():
+    if doc_file:
         docs = parse_label_linkbase(str(doc_file), role=Roles.DOCUMENTATION)
         print(f"  Documentation: {len(docs)}")
     print()
     
     # 3. Build statement trees
     print("Loading statement and disclosure definition linkbases...")
-    def_trees = build_stm_dis_trees(base_path, tree_type='def')
+    def_trees = build_stm_dis_trees(base_path, tree_type='def')    
     pre_trees = build_stm_dis_trees(base_path, tree_type='pre')
-    print()
+    # if not "soi" in def_trees.keys() or not "soi" in pre_trees.keys():
+    #     raise ValueError("Statement of Income not found in definition or presentation linkbases")
+    # if 'us-gaap_ResearchAndDevelopmentExpense' not in def_trees["soi"].nodes and 'us-gaap_ResearchAndDevelopmentExpense' not in pre_trees["soi"].nodes:
+    #     raise ValueError("ResearchAndDevelopmentExpense not found in definition or presentation linkbases")
+    
     
     # 4. Load references
     print("Loading references...")
-    reference_file = elts_path / 'us-gaap-ref-2020-01-31.xml'
-    if reference_file.exists():
+    reference_file = find_file_by_pattern(elts_path, r'us-gaap-ref-\d{4}(?:-\d{2}-\d{2})?\.xml')
+    if reference_file:
         references_dict = parse_reference_linkbase(str(reference_file))
         print(f"  References: {len(references_dict)}")
         print()
     else:
-        print(f"  References file not found: {reference_file}")
+        print(f"  References file not found matching pattern us-gaap-ref-\\d{{4}}(-\\d{{2}}-\\d{{2}})?\\.xml in {elts_path}")
         references_dict = {}
     
     # 4. Build DataFrame
@@ -258,14 +299,15 @@ def build_taxonomy_dataframe(
         stm_dis_info = find_concept_stm_dis(concept, def_trees)
         stm_dis_pre  = find_concept_stm_dis(concept, pre_trees)
         
-        if stm_dis_info:
-            stm_dis_type = stm_dis_info.statement_type
-            path = ' > '.join(stm_dis_info.path)
-            depth = stm_dis_info.depth
-        elif stm_dis_pre:
+        if stm_dis_pre:
             stm_dis_type = stm_dis_pre.statement_type
             path = ' > '.join(stm_dis_pre.path)
             depth = stm_dis_pre.depth
+        elif stm_dis_info:
+            stm_dis_type = stm_dis_info.statement_type
+            path = '[DEFINITION PATH]:' + ' > '.join(stm_dis_info.path)
+            depth = stm_dis_info.depth
+
         else:
             stm_dis_type = 'unknown'  # Not in any statement = probably notes disclosure
             path = ''
@@ -275,7 +317,7 @@ def build_taxonomy_dataframe(
         statements_present = []
         disclosures_present = []
         for stmt_type, tree in def_trees.items():
-            if stmt_type in ['sfp', 'soi', 'scf']:
+            if re.search( '^(sfp|soi|scf)', stmt_type):
                 if concept in tree:
                     statements_present.append(stmt_type)
             else:

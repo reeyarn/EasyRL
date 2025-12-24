@@ -116,7 +116,7 @@ def parse_schema(
     filter_instant: bool = False,
     filter_duration: bool = False,
     include_abstract: bool = False,
-) -> List[ConceptSchema]:
+    ) -> List[ConceptSchema]:
     """
     Parse an XBRL taxonomy schema and extract concept definitions.
     
@@ -215,7 +215,7 @@ def parse_schema(
 def parse_schema_to_dict(
     schema_path: str,
     **kwargs
-) -> Dict[str, ConceptSchema]:
+    ) -> Dict[str, ConceptSchema]:
     """
     Parse schema and return as dict keyed by concept name.
     
@@ -278,7 +278,7 @@ def extract_concepts_from_schema(
     prefix: str = 'us-gaap',
     filter_monetary: bool = False,
     include_abstract: bool = False,
-) -> List[str]:
+    ) -> List[str]:
     """
     Extract concept names from an XBRL taxonomy schema.
     
