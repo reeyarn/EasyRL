@@ -21,7 +21,7 @@ from leanrl import parse_label_linkbase, Roles
 
 # Get documentation (default role)
 docs = parse_label_linkbase('us-gaap-doc-2020-01-31.xml')
-print(docs.get('us-gaap_Assets'))
+print(docs.get('us-gaap_ResearchAndDevelopmentExpense'))
 # -> 'Sum of the carrying amounts as of the balance sheet date...'
 
 # Get display labels

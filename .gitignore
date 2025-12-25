@@ -114,4 +114,5 @@ dmypy.json
 
 .DS_Store
 src/.DS_Store
+tests/.DS_Store
 LeanRL.code-workspace
