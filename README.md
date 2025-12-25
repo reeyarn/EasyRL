@@ -25,16 +25,16 @@ XBRL is powerful but **complex**:
 
 
 
-## Features (Planned)
+## Features
 
-<!--- Extract facts from instance documents (simple alternative to `brel`, `python-xbrl`, etc.)-->
 - Parse **presentation linkbases** (build hierarchical trees, tables, roll-forwards)
-- Parse **calculation linkbases** (extract summation rules)
+- Parse **calculation linkbases** (extract summation rules with weights)
 - Parse **definition linkbases** (dimensions, tables, axes); [See: Documentation](https://github.com/reeyarn/LeanRL/tree/main/src/leanrl/linkbases/README.md)
-- Parse **label linkbases** (English/translated labels)
+- Parse **label linkbases** (English/translated labels and documentation)
+- Parse **reference linkbases** (links to authoritative literature)
 - Parse **taxonomy schema files** (elements, types, from `elts/`, `dis/`, `stm/`)
 - Convert XBRL structures to **pandas DataFrames** or **nested dictionaries**
-- Support for both **company filings** and **raw US GAAP/IFRS taxonomies**
+<!--- Support for both **company filings** and **raw US GAAP/IFRS taxonomies** (not yet company instance fact extraction implemented) -->
 
 ## Install
 To install released version, run:
@@ -114,9 +114,17 @@ leanrl/
 │   │   ├── calculation.py        # Calculation linkbase only
 │   │   ├── hierarchy.py          # Shared ConceptNode, ConceptTree (used by def & pre)
 │   │   ├── definition.py         # Definition linkbase only (imports from hierarchy)
-│   │   └── presentation.py       # Presentation linkbase only (imports from hierarchy)└── tests/
+│   │   ├── presentation.py       # Presentation linkbase only (imports from hierarchy)
+│   │   └── README.md             # Linkbase documentation
+│   ├── taxonomy/
+│   │   ├── __init__.py
+│   │   └── schema.py             # Taxonomy schema parser
+│   └── instance/                 # (reserved for future instance document parsing)
 ├── tests/
-    └── test1.py
+│   ├── test1.py
+│   ├── test2.py
+│   └── data/                     # Sample taxonomy files
+└── docs/
 ```    
 
 
