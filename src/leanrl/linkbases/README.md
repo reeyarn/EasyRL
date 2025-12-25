@@ -115,11 +115,11 @@ tree.get_descendants('us-gaap_OperatingCostsAndExpensesAbstract')
 tree.get_siblings('us-gaap_ResearchAndDevelopmentExpense')
 
 # Check if concept exists
-if 'us-gaap_ResearchAndDevelopmentExpense' in tree:
+if 'us-gaap_ResearchAndDevelopmentExpense' in tree.nodes:
     print("Concept found in tree")
 
 # Get number of concepts
-print(f"Tree contains {len(tree)} concepts")
+print(f"Tree contains {len(tree.nodes)} concepts")
 
 # Print tree structure
 print(tree.print_tree())
@@ -232,13 +232,13 @@ tree.get_weight('us-gaap_ResearchAndDevelopmentExpense')
 
 # Human-readable formula
 tree.get_formula('us-gaap_NetIncomeLoss')
-# -> 'NetIncomeLoss = Revenues - OperatingCostsAndExpenses'
+# -> 'NetIncomeLoss = ProfitLoss - NetIncomeLossAttributableToNoncontrollingInterest'
 
 # Validate actual numbers
 values = {
     'us-gaap_NetIncomeLoss': 100,
-    'us-gaap_Revenues': 500,
-    'us-gaap_OperatingCostsAndExpenses': 400
+    'us-gaap_ProfitLoss': 500,
+    'us-gaap_NetIncomeLossAttributableToNoncontrollingInterest': 400
 }
 tree.validate_calculation('us-gaap_NetIncomeLoss', values)
 # -> (True, 100.0, 100.0)  # (is_valid, expected, actual)
@@ -263,6 +263,7 @@ df = get_calculation_dataframe(tree)
 This example shows how to combine multiple linkbases to build a comprehensive concept database:
 
 ```python
+import re
 from pathlib import Path
 from leanrl import (
     parse_label_linkbase,
