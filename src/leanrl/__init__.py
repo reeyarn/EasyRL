@@ -50,6 +50,15 @@ from .taxonomy import (
     get_concept_types,
     get_schema_dataframe,
     extract_concepts_from_schema,
+    statement_full_names,
+    disclosure_full_names,
+    # Helper functions
+    StatementInfo,
+    find_file_by_pattern,
+    build_stm_dis_trees,
+    find_concept_stm_dis,
+    build_taxonomy_dataframe,
+    build_taxonomy_dataframe_from_zip,
 )
 
 # Utilities
@@ -92,6 +101,16 @@ __all__ = [
     'get_concept_types',
     'get_schema_dataframe',
     'extract_concepts_from_schema',
+    # Taxonomy constants
+    'statement_full_names',
+    'disclosure_full_names',
+    # Taxonomy helpers
+    'StatementInfo',
+    'find_file_by_pattern',
+    'build_stm_dis_trees',
+    'find_concept_stm_dis',
+    'build_taxonomy_dataframe',
+    'build_taxonomy_dataframe_from_zip',
     # Utils
     'extract_concept_from_href',
 ]

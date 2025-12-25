@@ -11,6 +11,7 @@ requires-python = ">=3.9"
 license = {text = "MIT"}
 dependencies = [
     "pandas>=2.2.0",
+    "openpyxl>=3.1.0",  # Required for Excel export (df.to_excel())
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

@@ -1,0 +1,15 @@
+# LeanRL Requirements
+# This file is for backward compatibility with pip install -r requirements.txt
+# For modern Python projects, use: pip install -e .  (which reads pyproject.toml)
+
+# Core dependencies
+pandas>=2.2.0
+openpyxl>=3.1.0
+
+# Optional development dependencies (install with: pip install -e ".[dev]")
+# pytest>=7.0
+# pytest-cov
+# ruff
+# mypy
+# hatch
+

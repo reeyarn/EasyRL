@@ -1,0 +1,2251 @@
+{
+  "table_of_contents": [
+    {
+      "title": "US GAAP Financial Statement Taxonomy Project",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          89.349609375,
+          72.07470703125
+        ],
+        [
+          484.3034973144531,
+          72.07470703125
+        ],
+        [
+          484.3034973144531,
+          92.28076171875
+        ],
+        [
+          89.349609375,
+          92.28076171875
+        ]
+      ]
+    },
+    {
+      "title": "XBRL US GAAP Taxonomies \nv1.0 \nTechnical Guide",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          88.3037109375,
+          125.7802734375
+        ],
+        [
+          487.9344787597656,
+          125.7802734375
+        ],
+        [
+          487.9344787597656,
+          238.21875
+        ],
+        [
+          88.3037109375,
+          238.21875
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          88.67724609375,
+          279.404296875
+        ],
+        [
+          179.296875,
+          279.404296875
+        ],
+        [
+          179.296875,
+          296.806640625
+        ],
+        [
+          88.67724609375,
+          296.806640625
+        ]
+      ]
+    },
+    {
+      "title": "Mark Bolgiano \nPresident and CEO",
+      "heading_level": null,
+      "page_id": 0,
+      "polygon": [
+        [
+          89.27490234375,
+          395.419921875
+        ],
+        [
+          181.9959259033203,
+          395.419921875
+        ],
+        [
+          181.9959259033203,
+          419.4494323730469
+        ],
+        [
+          89.27490234375,
+          419.4494323730469
+        ]
+      ]
+    },
+    {
+      "title": "Notice \nAuthorized Uses of this Document",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          171.6767578125,
+          73.5732421875
+        ],
+        [
+          444.44122314453125,
+          73.5732421875
+        ],
+        [
+          444.44122314453125,
+          106.6376953125
+        ],
+        [
+          171.6767578125,
+          106.6376953125
+        ]
+      ]
+    },
+    {
+      "title": "Notice \nAuthorized Uses Are Set Forth on the First Page of this \nDocument/File \nCopyright \u00a9 2008 XBRL US, Inc. All Rights Reserved",
+      "heading_level": null,
+      "page_id": 1,
+      "polygon": [
+        [
+          134.173828125,
+          452.84765625
+        ],
+        [
+          478.8700866699219,
+          452.84765625
+        ],
+        [
+          478.8700866699219,
+          505.44140625
+        ],
+        [
+          134.173828125,
+          505.44140625
+        ]
+      ]
+    },
+    {
+      "title": "Table of Contents",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          89.27490234375,
+          84.9814453125
+        ],
+        [
+          227.882568359375,
+          84.9814453125
+        ],
+        [
+          227.882568359375,
+          102.8671875
+        ],
+        [
+          89.27490234375,
+          102.8671875
+        ]
+      ]
+    },
+    {
+      "title": "Table of Figures",
+      "heading_level": null,
+      "page_id": 2,
+      "polygon": [
+        [
+          89.6484375,
+          386.71875
+        ],
+        [
+          216.7806854248047,
+          386.71875
+        ],
+        [
+          216.7806854248047,
+          404.12109375
+        ],
+        [
+          89.6484375,
+          404.12109375
+        ]
+      ]
+    },
+    {
+      "title": "1 Introduction",
+      "heading_level": null,
+      "page_id": 3,
+      "polygon": [
+        [
+          97.49267578125,
+          83.337890625
+        ],
+        [
+          218.36180114746094,
+          83.337890625
+        ],
+        [
+          218.36180114746094,
+          102.8671875
+        ],
+        [
+          97.49267578125,
+          102.8671875
+        ]
+      ]
+    },
+    {
+      "title": "2 Physical location and organization",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          88.9013671875,
+          339.15234375
+        ],
+        [
+          379.19781494140625,
+          339.15234375
+        ],
+        [
+          379.19781494140625,
+          357.328125
+        ],
+        [
+          88.9013671875,
+          357.328125
+        ]
+      ]
+    },
+    {
+      "title": "2.1 Naming Conventions",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          89.6484375,
+          477.59765625
+        ],
+        [
+          262.5943298339844,
+          477.59765625
+        ],
+        [
+          262.5943298339844,
+          493.8631591796875
+        ],
+        [
+          89.6484375,
+          493.8631591796875
+        ]
+      ]
+    },
+    {
+      "title": "Figure 2. Abbreviations used in file names",
+      "heading_level": null,
+      "page_id": 4,
+      "polygon": [
+        [
+          89.72314453125,
+          631.8984375
+        ],
+        [
+          306.0091552734375,
+          631.8984375
+        ],
+        [
+          306.0091552734375,
+          643.5
+        ],
+        [
+          89.72314453125,
+          643.5
+        ]
+      ]
+    },
+    {
+      "title": "Figure 3. Entry point types",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          88.67724609375,
+          107.2177734375
+        ],
+        [
+          227.69195556640625,
+          107.2177734375
+        ],
+        [
+          227.69195556640625,
+          118.0458984375
+        ],
+        [
+          88.67724609375,
+          118.0458984375
+        ]
+      ]
+    },
+    {
+      "title": "Figure 4. Statement type abbreviations",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          88.22900390625,
+          183.69140625
+        ],
+        [
+          290.9771728515625,
+          183.69140625
+        ],
+        [
+          290.9771728515625,
+          194.326171875
+        ],
+        [
+          88.22900390625,
+          194.326171875
+        ]
+      ]
+    },
+    {
+      "title": "Figure 5. Industry abbreviations",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          87.93017578125,
+          363.708984375
+        ],
+        [
+          256.8231201171875,
+          363.708984375
+        ],
+        [
+          256.8231201171875,
+          374.923828125
+        ],
+        [
+          87.93017578125,
+          374.923828125
+        ]
+      ]
+    },
+    {
+      "title": "Figure 6. Prefixes for the main file groups",
+      "heading_level": null,
+      "page_id": 5,
+      "polygon": [
+        [
+          89.05078125,
+          473.73046875
+        ],
+        [
+          304.52569580078125,
+          473.73046875
+        ],
+        [
+          304.52569580078125,
+          484.55859375
+        ],
+        [
+          89.05078125,
+          484.55859375
+        ]
+      ]
+    },
+    {
+      "title": "Figure 7. Linkbase naming abbreviations",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          88.3037109375,
+          72.07470703125
+        ],
+        [
+          298.6856384277344,
+          72.07470703125
+        ],
+        [
+          298.6856384277344,
+          83.57958984375
+        ],
+        [
+          88.3037109375,
+          83.57958984375
+        ]
+      ]
+    },
+    {
+      "title": "Figure 8. Testing Entry Points",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          88.67724609375,
+          266.642578125
+        ],
+        [
+          243.13949584960938,
+          266.642578125
+        ],
+        [
+          243.13949584960938,
+          277.857421875
+        ],
+        [
+          88.67724609375,
+          277.857421875
+        ]
+      ]
+    },
+    {
+      "title": "2.2 The Base Schema us-gaap-2008-03-31.xsd",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          89.6484375,
+          388.845703125
+        ],
+        [
+          404.36260986328125,
+          388.845703125
+        ],
+        [
+          404.36260986328125,
+          404.12109375
+        ],
+        [
+          89.6484375,
+          404.12109375
+        ]
+      ]
+    },
+    {
+      "title": "2.3 References and the Reference Linkbase",
+      "heading_level": null,
+      "page_id": 6,
+      "polygon": [
+        [
+          89.6484375,
+          657.03515625
+        ],
+        [
+          388.0800476074219,
+          657.03515625
+        ],
+        [
+          388.0800476074219,
+          672.50390625
+        ],
+        [
+          89.6484375,
+          672.50390625
+        ]
+      ]
+    },
+    {
+      "title": "2.4 Documentation and the Documentation Linkbase",
+      "heading_level": null,
+      "page_id": 7,
+      "polygon": [
+        [
+          89.349609375,
+          194.8095703125
+        ],
+        [
+          448.5113830566406,
+          194.8095703125
+        ],
+        [
+          448.5113830566406,
+          210.18316650390625
+        ],
+        [
+          89.349609375,
+          210.18316650390625
+        ]
+      ]
+    },
+    {
+      "title": "2.5 Labels and the Label Linkbase",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          89.349609375,
+          112.1484375
+        ],
+        [
+          325.71807861328125,
+          112.1484375
+        ],
+        [
+          325.71807861328125,
+          128.00390625
+        ],
+        [
+          89.349609375,
+          128.00390625
+        ]
+      ]
+    },
+    {
+      "title": "2.5.1 Legacy Element Names",
+      "heading_level": null,
+      "page_id": 8,
+      "polygon": [
+        [
+          89.349609375,
+          363.90234375
+        ],
+        [
+          274.9113464355469,
+          363.90234375
+        ],
+        [
+          274.9113464355469,
+          378.2109375
+        ],
+        [
+          89.349609375,
+          378.2109375
+        ]
+      ]
+    },
+    {
+      "title": "2.5.2 Negating Labels",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          88.97607421875,
+          378.404296875
+        ],
+        [
+          230.07305908203125,
+          378.404296875
+        ],
+        [
+          230.07305908203125,
+          392.712890625
+        ],
+        [
+          88.97607421875,
+          392.712890625
+        ]
+      ]
+    },
+    {
+      "title": "2.6 Calculation, Definition, and Presentation Linkbases",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          89.349609375,
+          594.7734375
+        ],
+        [
+          464.1340026855469,
+          594.7734375
+        ],
+        [
+          464.1340026855469,
+          610.3230590820312
+        ],
+        [
+          89.349609375,
+          610.3230590820312
+        ]
+      ]
+    },
+    {
+      "title": "3 Discoverable Taxonomy Sets",
+      "heading_level": null,
+      "page_id": 9,
+      "polygon": [
+        [
+          89.12548828125,
+          664.76953125
+        ],
+        [
+          336.68707275390625,
+          664.76953125
+        ],
+        [
+          336.68707275390625,
+          683.33203125
+        ],
+        [
+          89.12548828125,
+          683.33203125
+        ]
+      ]
+    },
+    {
+      "title": "Figure 12. Four entry points per industry",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          89.349609375,
+          121.236328125
+        ],
+        [
+          301.21875,
+          121.236328125
+        ],
+        [
+          301.21875,
+          132.837890625
+        ],
+        [
+          89.349609375,
+          132.837890625
+        ]
+      ]
+    },
+    {
+      "title": "Figure 13. Entry points for non-GAAP taxonomies",
+      "heading_level": null,
+      "page_id": 11,
+      "polygon": [
+        [
+          89.4990234375,
+          525.9375
+        ],
+        [
+          343.65234375,
+          525.9375
+        ],
+        [
+          343.65234375,
+          537.5390625
+        ],
+        [
+          89.4990234375,
+          537.5390625
+        ]
+      ]
+    },
+    {
+      "title": "4 Namespace Prefixes, Namespace URIs, absolute and \nRelative URLs",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          88.9013671875,
+          225.26885986328125
+        ],
+        [
+          517.1988525390625,
+          225.26885986328125
+        ],
+        [
+          517.1988525390625,
+          259.70867919921875
+        ],
+        [
+          88.9013671875,
+          259.70867919921875
+        ]
+      ]
+    },
+    {
+      "title": "5 Presentation Linkbases are for Viewing the Taxonomy",
+      "heading_level": null,
+      "page_id": 12,
+      "polygon": [
+        [
+          89.6484375,
+          511.7687683105469
+        ],
+        [
+          525.7839965820312,
+          511.7687683105469
+        ],
+        [
+          525.7839965820312,
+          527.87109375
+        ],
+        [
+          89.6484375,
+          527.87109375
+        ]
+      ]
+    },
+    {
+      "title": "Figure 14. Facts in a sample statement of income.",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          88.37841796875,
+          72.4130859375
+        ],
+        [
+          345.28839111328125,
+          72.4130859375
+        ],
+        [
+          345.28839111328125,
+          83.2412109375
+        ],
+        [
+          88.37841796875,
+          83.2412109375
+        ]
+      ]
+    },
+    {
+      "title": "6 Calculations, Definitions are aligned to Presentation",
+      "heading_level": null,
+      "page_id": 13,
+      "polygon": [
+        [
+          89.2001953125,
+          424.6171875
+        ],
+        [
+          512.1141357421875,
+          424.6171875
+        ],
+        [
+          512.1141357421875,
+          443.1796875
+        ],
+        [
+          89.2001953125,
+          443.1796875
+        ]
+      ]
+    },
+    {
+      "title": "7 Negating Labels",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          89.947265625,
+          83.48291015625
+        ],
+        [
+          239.5947723388672,
+          83.48291015625
+        ],
+        [
+          239.5947723388672,
+          103.447265625
+        ],
+        [
+          89.947265625,
+          103.447265625
+        ]
+      ]
+    },
+    {
+      "title": "7.1 Goal",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          89.349609375,
+          117.17578125
+        ],
+        [
+          153.73902893066406,
+          117.17578125
+        ],
+        [
+          153.73902893066406,
+          133.8046875
+        ],
+        [
+          89.349609375,
+          133.8046875
+        ]
+      ]
+    },
+    {
+      "title": "7.2 Negating Labels definitions",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          89.2001953125,
+          335.671875
+        ],
+        [
+          305.4582824707031,
+          335.671875
+        ],
+        [
+          305.4582824707031,
+          352.6875
+        ],
+        [
+          89.2001953125,
+          352.6875
+        ]
+      ]
+    },
+    {
+      "title": "Figure 16. Role definitions",
+      "heading_level": null,
+      "page_id": 15,
+      "polygon": [
+        [
+          89.947265625,
+          389.232421875
+        ],
+        [
+          225.017578125,
+          389.232421875
+        ],
+        [
+          225.017578125,
+          401.80078125
+        ],
+        [
+          89.947265625,
+          401.80078125
+        ]
+      ]
+    },
+    {
+      "title": "7.3 Preparers' Perception of Signs",
+      "heading_level": null,
+      "page_id": 16,
+      "polygon": [
+        [
+          89.87255859375,
+          71.68798828125
+        ],
+        [
+          326.7260437011719,
+          71.68798828125
+        ],
+        [
+          326.7260437011719,
+          88.12353515625
+        ],
+        [
+          89.87255859375,
+          88.12353515625
+        ]
+      ]
+    },
+    {
+      "title": "Figure 18. Without Negating Labels, Preparers are likely to flip signs",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          88.3037109375,
+          127.810546875
+        ],
+        [
+          440.16546630859375,
+          127.810546875
+        ],
+        [
+          440.16546630859375,
+          139.025390625
+        ],
+        [
+          88.3037109375,
+          139.025390625
+        ]
+      ]
+    },
+    {
+      "title": "7.4 Negating Labels control sign conventions line-by-line",
+      "heading_level": null,
+      "page_id": 17,
+      "polygon": [
+        [
+          89.6484375,
+          441.6328125
+        ],
+        [
+          478.9052734375,
+          441.6328125
+        ],
+        [
+          478.9052734375,
+          457.3831481933594
+        ],
+        [
+          89.6484375,
+          457.3831481933594
+        ]
+      ]
+    },
+    {
+      "title": "Figure 19. Negating Labels identified",
+      "heading_level": null,
+      "page_id": 18,
+      "polygon": [
+        [
+          87.85546875,
+          72.26806640625
+        ],
+        [
+          279.780029296875,
+          72.26806640625
+        ],
+        [
+          279.780029296875,
+          83.09619140625
+        ],
+        [
+          87.85546875,
+          83.09619140625
+        ]
+      ]
+    },
+    {
+      "title": "Figure 20. Corrected Instance.",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          89.4990234375,
+          178.083984375
+        ],
+        [
+          247.30258178710938,
+          178.083984375
+        ],
+        [
+          247.30258178710938,
+          189.298828125
+        ],
+        [
+          89.4990234375,
+          189.298828125
+        ]
+      ]
+    },
+    {
+      "title": "7.5 Discussion of Negating Labels",
+      "heading_level": null,
+      "page_id": 19,
+      "polygon": [
+        [
+          89.42431640625,
+          566.54296875
+        ],
+        [
+          326.4241027832031,
+          566.54296875
+        ],
+        [
+          326.4241027832031,
+          582.01171875
+        ],
+        [
+          89.42431640625,
+          582.01171875
+        ]
+      ]
+    },
+    {
+      "title": "7.6 Data Import and Export are not impacted by Negating Labels",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          89.4990234375,
+          293.712890625
+        ],
+        [
+          525.510498046875,
+          293.712890625
+        ],
+        [
+          525.510498046875,
+          309.6031494140625
+        ],
+        [
+          89.4990234375,
+          309.6031494140625
+        ]
+      ]
+    },
+    {
+      "title": "7.7 Technical Compliance for Negating Labels",
+      "heading_level": null,
+      "page_id": 20,
+      "polygon": [
+        [
+          89.4990234375,
+          353.267578125
+        ],
+        [
+          405.0127868652344,
+          353.267578125
+        ],
+        [
+          405.0127868652344,
+          368.736328125
+        ],
+        [
+          89.4990234375,
+          368.736328125
+        ]
+      ]
+    },
+    {
+      "title": "8 References (non-normative)",
+      "heading_level": null,
+      "page_id": 22,
+      "polygon": [
+        [
+          89.57373046875,
+          84.5947265625
+        ],
+        [
+          328.4816589355469,
+          84.5947265625
+        ],
+        [
+          328.4816589355469,
+          102.5771484375
+        ],
+        [
+          89.57373046875,
+          102.5771484375
+        ]
+      ]
+    },
+    {
+      "title": "9 Appendices",
+      "heading_level": null,
+      "page_id": 23,
+      "polygon": [
+        [
+          98.7626953125,
+          79.1806640625
+        ],
+        [
+          221.0403594970703,
+          79.1806640625
+        ],
+        [
+          221.0403594970703,
+          96.3896484375
+        ],
+        [
+          98.7626953125,
+          96.3896484375
+        ]
+      ]
+    },
+    {
+      "title": "9.1 Appendix A: Signature and Document Tracking Page",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          88.3037109375,
+          83.8212890625
+        ],
+        [
+          474.2374572753906,
+          83.8212890625
+        ],
+        [
+          474.2374572753906,
+          100.8369140625
+        ],
+        [
+          88.3037109375,
+          100.8369140625
+        ]
+      ]
+    },
+    {
+      "title": "XBRL US GAAP Taxonomies v1.0 \nTechnical Guide",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          87.85546875,
+          131.0009765625
+        ],
+        [
+          459.5089416503906,
+          131.0009765625
+        ],
+        [
+          459.5089416503906,
+          184.3681640625
+        ],
+        [
+          87.85546875,
+          184.3681640625
+        ]
+      ]
+    },
+    {
+      "title": "",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          89.2001953125,
+          226.6171875
+        ],
+        [
+          180.0439453125,
+          226.6171875
+        ],
+        [
+          180.0439453125,
+          244.01953125
+        ],
+        [
+          89.2001953125,
+          244.01953125
+        ]
+      ]
+    },
+    {
+      "title": "Version 1.0 April 28, 2008",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          90.0,
+          226.810546875
+        ],
+        [
+          494.3350524902344,
+          226.810546875
+        ],
+        [
+          494.3350524902344,
+          244.986328125
+        ],
+        [
+          90.0,
+          244.986328125
+        ]
+      ]
+    },
+    {
+      "title": "Document History",
+      "heading_level": null,
+      "page_id": 24,
+      "polygon": [
+        [
+          237.05999755859375,
+          513.5625
+        ],
+        [
+          379.29833984375,
+          513.5625
+        ],
+        [
+          379.29833984375,
+          532.125
+        ],
+        [
+          237.05999755859375,
+          532.125
+        ]
+      ]
+    }
+  ],
+  "page_stats": [
+    {
+      "page_id": 0,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          37
+        ],
+        [
+          "Line",
+          19
+        ],
+        [
+          "Text",
+          6
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 1,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          67
+        ],
+        [
+          "Line",
+          34
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 2,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          147
+        ],
+        [
+          "TableCell",
+          110
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "TableOfContents",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 3,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          109
+        ],
+        [
+          "Line",
+          54
+        ],
+        [
+          "TableCell",
+          24
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 4,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          79
+        ],
+        [
+          "Line",
+          40
+        ],
+        [
+          "TableCell",
+          36
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "Table",
+          3
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Code",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 5,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          97
+        ],
+        [
+          "TableCell",
+          55
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Table",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 6,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          99
+        ],
+        [
+          "Line",
+          46
+        ],
+        [
+          "TableCell",
+          20
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 7,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          128
+        ],
+        [
+          "TableCell",
+          70
+        ],
+        [
+          "Line",
+          64
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 8,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          116
+        ],
+        [
+          "Line",
+          51
+        ],
+        [
+          "TableCell",
+          46
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "TableGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 9,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          114
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "TableCell",
+          14
+        ],
+        [
+          "Text",
+          8
+        ],
+        [
+          "SectionHeader",
+          3
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 10,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          21
+        ],
+        [
+          "Line",
+          10
+        ],
+        [
+          "Caption",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Text",
+          1
+        ],
+        [
+          "Figure",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "FigureGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 11,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          124
+        ],
+        [
+          "Line",
+          55
+        ],
+        [
+          "TableCell",
+          55
+        ],
+        [
+          "Text",
+          11
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 12,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          107
+        ],
+        [
+          "Line",
+          41
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 13,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          59
+        ],
+        [
+          "Line",
+          28
+        ],
+        [
+          "TableCell",
+          28
+        ],
+        [
+          "Text",
+          4
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 14,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "TableCell",
+          60
+        ],
+        [
+          "Span",
+          9
+        ],
+        [
+          "Line",
+          5
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Form",
+          1
+        ],
+        [
+          "Caption",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 15,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          99
+        ],
+        [
+          "Line",
+          49
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          4
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Code",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 16,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "TableCell",
+          81
+        ],
+        [
+          "Span",
+          57
+        ],
+        [
+          "Line",
+          26
+        ],
+        [
+          "Text",
+          3
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 17,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "TableCell",
+          96
+        ],
+        [
+          "Span",
+          33
+        ],
+        [
+          "Line",
+          17
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 18,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          17
+        ],
+        [
+          "Line",
+          9
+        ],
+        [
+          "TableCell",
+          8
+        ],
+        [
+          "Text",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 19,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "TableCell",
+          96
+        ],
+        [
+          "Span",
+          58
+        ],
+        [
+          "Line",
+          29
+        ],
+        [
+          "Text",
+          5
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Table",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 20,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          82
+        ],
+        [
+          "Line",
+          38
+        ],
+        [
+          "Text",
+          7
+        ],
+        [
+          "ListItem",
+          3
+        ],
+        [
+          "SectionHeader",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "ListGroup",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 21,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          89
+        ],
+        [
+          "Line",
+          45
+        ],
+        [
+          "TableCell",
+          30
+        ],
+        [
+          "Table",
+          2
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 22,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          59
+        ],
+        [
+          "Line",
+          30
+        ],
+        [
+          "TableCell",
+          16
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ],
+        [
+          "TableOfContents",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 23,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          9
+        ],
+        [
+          "Line",
+          5
+        ],
+        [
+          "PageFooter",
+          2
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "SectionHeader",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    },
+    {
+      "page_id": 24,
+      "text_extraction_method": "pdftext",
+      "block_counts": [
+        [
+          "Span",
+          78
+        ],
+        [
+          "Line",
+          38
+        ],
+        [
+          "TableCell",
+          26
+        ],
+        [
+          "Text",
+          12
+        ],
+        [
+          "SectionHeader",
+          5
+        ],
+        [
+          "PageHeader",
+          1
+        ],
+        [
+          "Handwriting",
+          1
+        ],
+        [
+          "Table",
+          1
+        ],
+        [
+          "PageFooter",
+          1
+        ]
+      ],
+      "block_metadata": {
+        "llm_request_count": 0,
+        "llm_error_count": 0,
+        "llm_tokens_used": 0
+      }
+    }
+  ],
+  "debug_data_path": "debug_data/Bolgiano et al. - 2008 - US GAAP Financial Statement Taxonomy Project XBRL US GAAP Taxonomies v1.0 Technical Guide"
+}
