@@ -80,7 +80,7 @@ for i, (concept, label) in enumerate(labels.items()):
         break
 ```
 
-See [test2.py](https://github.com/reeyarn/LeanRL/blob/main/tests/test2.py) for latest added features
+See [test2.py](https://github.com/reeyarn/LeanRL/blob/main/tests/test2.py) and [test3.py](https://github.com/reeyarn/LeanRL/blob/main/tests/test3.py) for latest added features
 
 Output example: 
 
