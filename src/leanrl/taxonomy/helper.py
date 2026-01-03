@@ -203,7 +203,23 @@ def build_taxonomy_dataframe(
     # 1. Extract all concepts from schema
     schema_file = find_file_by_pattern(elts_path, r'us-gaap-\d{4}(?:-\d{2}-\d{2})?\.xsd')
     if not schema_file:
-        raise FileNotFoundError(f"Schema file not found matching pattern us-gaap-\\d{{4}}(-\\d{{2}}-\\d{{2}})?\\.xsd in {elts_path}")
+        schema_pattern = re.compile(r'^us-gaap-\d{4}(?:-\d{2}-\d{2})?\.xsd$')
+        base = base.parent
+        base_path = str(base)
+        elts_path = base / 'elts'
+        for file_path in elts_path.glob('*.xsd'):
+            #print(f"Checking _{file_path.name}_")
+            if schema_pattern.match(file_path.name):
+                #print(f"Found schema file with schema_pattern: {file_path}")
+                schema_file = file_path
+                break
+            if re.search(r'^us-gaap-\d{4}(?:-\d{2}-\d{2})?\.xsd$', file_path.name):
+                schema_file = file_path
+                print(f"Found schema file with re.search: {schema_file}")
+                break
+        if not schema_file:
+            raise FileNotFoundError(f"Schema file not found matching pattern us-gaap-\\d{{4}}(-\\d{{2}}-\\d{{2}})?\\.xsd in {elts_path} or {base / '..' / 'elts'}")
+        
     
     print(f"Extracting concepts from: {schema_file}")
     all_concepts = extract_concepts_from_schema(str(schema_file), include_abstract=True)

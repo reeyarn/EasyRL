@@ -40,6 +40,8 @@ from .linkbases import (
     CalculationTree,
     parse_calculation_linkbase,
     get_calculation_dataframe,
+    # Helper
+    get_specific_role_tree,
 )
 
 # Taxonomy schema parsers
@@ -94,6 +96,8 @@ __all__ = [
     'CalculationTree',
     'parse_calculation_linkbase',
     'get_calculation_dataframe',
+    # Linkbases - Helper
+    'get_specific_role_tree',
     # Taxonomy Schema
     'ConceptSchema',
     'parse_schema',

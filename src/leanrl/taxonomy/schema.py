@@ -5,7 +5,7 @@ Extract concept definitions from XBRL taxonomy schema (.xsd) files.
 Includes metadata like type, periodType, balance, and abstract status.
 """
 
-from typing import List, Dict, Optional, Set
+from typing import List, Dict, Optional, Set, Union, IO
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 import xml.etree.ElementTree as ET
@@ -44,7 +44,8 @@ class ConceptSchema:
     
     Attributes:
         name: Concept name (e.g., 'us-gaap_Assets')
-        id: Element ID attribute
+        prefix: Namespace prefix (e.g., 'us-gaap' or 'tsla')
+        id: Element ID attribute (e.g., "tsla_ResaleValueGuaranteesCurrentPortion")
         type: XML Schema type (e.g., 'xbrli:monetaryItemType')
         period_type: 'instant' or 'duration'
         balance: 'debit', 'credit', or None
@@ -53,6 +54,7 @@ class ConceptSchema:
         nillable: Whether the element can be nil
     """
     name: str
+    prefix: str = ''
     id: str = ''
     type: str = ''
     period_type: Optional[str] = None  # 'instant' or 'duration'
@@ -104,6 +106,22 @@ class ConceptSchema:
             return self.name.split('_', 1)[1]
         return self.name
     
+    @property
+    def is_usgaap(self) -> bool:
+        """Check if this concept is part of the US GAAP taxonomy."""
+        return self.name.startswith('us-gaap_') or self.prefix.startswith('us-gaap')
+    
+    @property
+    def is_extension(self) -> bool:
+        # If it's not standard GAAP (and not SEC standard like 'dei' or 'srt'), it's an extension
+        standard_prefixes = ['us-gaap', 'dei', 'srt', 'country', 'currency', 'exch', 'stpr', 'sic', "sec"]
+        # If prefix is empty, check name, otherwise check prefix
+        p = self.prefix if self.prefix else self.name.split('_')[0]
+        if not p:
+            return False
+        return p.lower() not in standard_prefixes
+        
+    
     def to_dict(self) -> Dict:
         """Convert to dictionary."""
         return asdict(self)
@@ -111,7 +129,8 @@ class ConceptSchema:
 
 def parse_schema(
     schema_path: str,
-    prefix: str = 'us-gaap',
+    #prefix: str = 'us-gaap',
+    prefix: Optional[str] = None,
     filter_monetary: bool = False,
     filter_instant: bool = False,
     filter_duration: bool = False,
@@ -122,8 +141,9 @@ def parse_schema(
     
     Args:
         schema_path: Path to the .xsd schema file
-        prefix: Namespace prefix to filter by (e.g., 'us-gaap', 'dei')
-                Set to None to include all concepts.
+        prefix: Namespace prefix to filter by (e.g., 'us-gaap').
+                If None (default), accepts ALL concepts found in the file,
+                using the prefix defined in the element 'id'.
         filter_monetary: If True, only return monetary type concepts
         filter_instant: If True, only return instant (balance sheet) concepts
         filter_duration: If True, only return duration (income statement) concepts
@@ -158,21 +178,51 @@ def parse_schema(
     
     # Find all xs:element declarations
     for elem in root.iter(f'{XS_NS}element'):
-        name = elem.get('name')
-        if not name:
+        # 1. Get fundamental identifiers
+        elem_id = elem.get('id', '')
+        raw_name = elem.get('name', '')
+        if not raw_name:
             continue
+        #raw_name = elem.get('name')
+        # if not name:
+        #     continue
+
+        # 2. Determine the full Concept Name
+        # In XBRL, the 'id' attribute typically contains {prefix}_{name}
+        # e.g., id="tsla_AutomotiveSales" or id="us-gaap_Assets"
+        if elem_id:
+            name = elem_id
+        elif prefix:
+            # Fallback: if no ID but prefix provided, construct it
+            name = f'{prefix}_{raw_name}'
+        else:
+            # Fallback: just use the raw name (rare in strict XBRL)
+            name = raw_name
         
-        # Add prefix if not present
-        if prefix and not name.startswith(f'{prefix}_'):
-            # Check if the element has an id with the prefix
-            elem_id = elem.get('id', '')
-            if elem_id.startswith(f'{prefix}_'):
-                name = elem_id
-            else:
-                name = f'{prefix}_{name}'
+        # # Add prefix if not present
+        # if prefix and not name.startswith(f'{prefix}_'):
+        #     # Check if the element has an id with the prefix
+        #     elem_id = elem.get('id', '')
+        #     if elem_id.startswith(f'{prefix}_'):
+        #         name = elem_id
+        #     else:
+        #         name = f'{prefix}_{raw_name}'
+        # --- NEW LOGIC: Extract Prefix ---
+        current_prefix = None
+        if '_' in name:
+            # e.g., "us-gaap_Assets" -> "us-gaap"
+            current_prefix = name.split('_', 1)[0]
+        elif prefix:
+            current_prefix = prefix
+        # ---------------------------------        
+        # 3. Apply Prefix Filter (if user specifically requested one)
+        if prefix is not None:
+            # If the resulting name doesn't start with the requested prefix, skip it
+            if not name.startswith(f'{prefix}_'):
+                continue
         
         # Get attributes
-        elem_id = elem.get('id', '')
+        #elem_id = elem.get('id', '')
         elem_type = elem.get('type', '')
         abstract = elem.get('abstract', 'false').lower() == 'true'
         nillable = elem.get('nillable', 'true').lower() == 'true'
@@ -183,17 +233,21 @@ def parse_schema(
         balance = elem.get(f'{XBRLI_NS}balance')
         
         # Create concept schema
-        schema = ConceptSchema(
-            name=name,
-            id=elem_id,
-            type=elem_type,
-            period_type=period_type,
-            balance=balance,
-            abstract=abstract,
-            substitution_group=substitution_group,
-            nillable=nillable,
-        )
-        
+        try:
+            schema = ConceptSchema(
+                name=name,
+                prefix=current_prefix,  # <--- Pass the extracted prefix here
+                id=elem_id,
+                type=elem_type,
+                period_type=period_type,
+                balance=balance,
+                abstract=abstract,
+                substitution_group=substitution_group,
+                nillable=nillable,
+            )
+        except Exception as e:
+            print(f"Error creating ConceptSchema for {name}: {e}")
+            continue
         # Apply filters
         if not include_abstract and abstract:
             continue
@@ -225,6 +279,10 @@ def parse_schema_to_dict(
         Dict mapping concept name (str) to ConceptSchema object
     """
     schemas = parse_schema(schema_path, **kwargs)
+    #schemas_dict = {s.name: s for s in schemas}
+    # schemas_dict["is_extension"] = schemas.is_extension
+    # schemas_dict["is_usgaap"] = schemas.is_usgaap
+    #return schemas_dict
     return {s.name: s for s in schemas}
 
 
