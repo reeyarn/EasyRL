@@ -16,6 +16,7 @@ XBRL is powerful but **complex**:
 - A single filing includes the instance document, company linkbases, and a huge taxonomy (hundreds of XML files)
 - Traditional XBRL processors load the full DTS into memory: slow and memory-intensive
 - In many real-world scenarios (data extraction, analysis, reporting), you only need a small subset of the data
+- See the [technical documentation of the original 2008 version 1.0](https://github.com/reeyarn/LeanRL/tree/70578246ca87df60da2d2c690e07c1a71d31cf3c/docs/Bolgiano%20et%20al.%20-%202008%20-%20US%20GAAP%20Financial%20Statement%20Taxonomy%20Project%20XBRL%20US%20GAAP%20Taxonomies%20v1.0%20Technical%20Guide)
 
 
 **LeanRL** takes a **pragmatic, non-strict** approach:

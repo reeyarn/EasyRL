@@ -6,6 +6,9 @@ DataFrame with information about each concept including:
 - Labels and documentation
 - Statement classification (sfp, soi, scf, notes)
 - Hierarchy path within each statement
+
+Many of the functions have been incorporated into the leanrl library under `leanrl.taxonomy.helper`.
+See [test3.py](https://github.com/reeyarn/LeanRL/blob/main/tests/test3.py) for an example of how to use the helper functions.
 """
 
 import sys

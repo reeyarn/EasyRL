@@ -46,7 +46,7 @@ def find_file_by_pattern(directory: Path, pattern: str) -> Optional[Path]:
     return None
 
 
-def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTree]:
+def build_stm_dis_trees(base_path: str, tree_type='def', debug = False) -> Dict[str, ConceptTree]:
     """
     Build ConceptTrees for each financial statement and disclosure type.
     
@@ -129,7 +129,8 @@ def build_stm_dis_trees(base_path: str, tree_type='def') -> Dict[str, ConceptTre
         
         if tree is not None:
             trees[statement_type] = tree
-            print(f"Loaded {statement_type.upper()}: {len(tree)} concepts (from {file_path.name}) for {tree_type} type")
+            if debug:
+                print(f"Loaded {statement_type.upper()}: {len(tree)} concepts (from {file_path.name}) for {tree_type} type")
     
     return trees
 
@@ -168,7 +169,7 @@ def find_concept_stm_dis(
                 # Add statement type as conceptual root
                 fullname = stmt_fullname.get(stmt_type, "unknown")
                 full_path = [f'[{fullname}]'] + path
-                print(f"Found {concept} in {fullname} with path: {full_path}")
+                #print(f"Found {concept} in {fullname} with path: {full_path}")
                 return StatementInfo(
                     statement_type=stmt_type,
                     path=full_path,
@@ -180,7 +181,8 @@ def find_concept_stm_dis(
     
 def build_taxonomy_dataframe(
     base_path: str,
-    output_file: str | None = None
+    output_file: str | None = None,
+    debug = False
     ):
     """
     Build a comprehensive DataFrame of all US-GAAP concepts.
@@ -330,26 +332,27 @@ def build_taxonomy_dataframe(
     df = pd.DataFrame(rows)
     
     # Summary statistics
-    print()
-    print("=" * 60)
-    print("Summary Statistics")
-    print("=" * 60)
-    print(f"\nTotal concepts: {len(df)}")
-    print(f"\nBy primary statement type:")
-    print(df['all_statements'].value_counts().to_string())
-    print(f"\nBy primary disclosure type:")
-    print(df['all_disclosures'].value_counts().to_string())
-    print(f"\nConcepts with labels: {(df['label'] != '').sum()}")
-    print(f"Concepts with documentation: {(df['documentation'] != '').sum()}")
-    
-    # Schema metadata summary
-    print(f"\n--- Schema Metadata ---")
-    print(f"Abstract concepts: {df['is_abstract'].sum()}")
-    print(f"Monetary concepts: {df['is_monetary'].sum()}")
-    print(f"\nBy period type:")
-    print(df['period_type'].value_counts(dropna=False).to_string())
-    print(f"\nBy balance type:")
-    print(df['balance'].value_counts(dropna=False).to_string())
+    if debug:
+        print()
+        print("=" * 60)
+        print("Summary Statistics")
+        print("=" * 60)
+        print(f"\nTotal concepts: {len(df)}")
+        print(f"\nBy primary statement type:")
+        print(df['all_statements'].value_counts().to_string())
+        print(f"\nBy primary disclosure type:")
+        print(df['all_disclosures'].value_counts().to_string())
+        print(f"\nConcepts with labels: {(df['label'] != '').sum()}")
+        print(f"Concepts with documentation: {(df['documentation'] != '').sum()}")
+        
+        # Schema metadata summary
+        print(f"\n--- Schema Metadata ---")
+        print(f"Abstract concepts: {df['is_abstract'].sum()}")
+        print(f"Monetary concepts: {df['is_monetary'].sum()}")
+        print(f"\nBy period type:")
+        print(df['period_type'].value_counts(dropna=False).to_string())
+        print(f"\nBy balance type:")
+        print(df['balance'].value_counts(dropna=False).to_string())
     
     # Save to CSV
     if output_file:
@@ -377,13 +380,14 @@ def build_taxonomy_dataframe_from_zip(zip_file: str):
     # Create a temporary directory
     temp_dir = tempfile.mkdtemp()
     
+    
     try:
         # Extract the zip file to the temporary directory
         with zipfile.ZipFile(zip_file, 'r') as zip_ref:
             zip_ref.extractall(temp_dir)
-        
+        zip_file_name = Path(zip_file).stem
         # Call build_taxonomy_dataframe with the temporary directory path
-        df = build_taxonomy_dataframe(temp_dir)
+        df = build_taxonomy_dataframe(os.path.join(temp_dir, zip_file_name))
         
         return df
     
